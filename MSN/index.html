@@ -1,0 +1,3910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSN Academy - Nation Building Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --dark-purple: #0E040B;
+            --navy-blue: #010513;
+            --dark-blue: #011433;
+            --deep-blue: #020A1C;
+            --vivid-red: #D60302;
+            --light-bg: #f8f9fa;
+            --light-text: #ffffff;
+            --dark-text: #212529;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--vivid-red);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #b00202;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(214, 3, 2, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--vivid-red);
+            color: var(--vivid-red);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--vivid-red);
+            color: white;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--vivid-red);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--dark-blue);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(1, 20, 51, 0.2);
+        }
+
+        header.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 20px rgba(1, 20, 51, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--vivid-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy-blue) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23D60302' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--vivid-red);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-btn {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            width: 60px;
+            height: 58px;
+            background: var(--vivid-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(214, 3, 2, 0.4);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.0);
+            background: #b00202;
+        }
+
+        /* Courses Section - Slider */
+        .courses-slider-container,
+        .team-slider-container {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .courses-slider,
+        .team-slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 2rem;
+        }
+
+        .course-card,
+        .team-member {
+            flex: 0 0 calc(33.333% - 1.333rem);
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .course-card:hover,
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .course-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--vivid-red);
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.1);
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+
+        .course-price {
+            background: var(--vivid-red);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+
+        .course-rating,
+        .course-students {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--vivid-red);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-arrow:hover {
+            background: #b00202;
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--vivid-red);
+            transform: scale(1.2);
+        }
+
+        /* Certificate Verification */
+        .certificate-section {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy-blue) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23D60302' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .certificate-container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .verification-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: rgb(184, 6, 6);
+            font-size: 1rem;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--vivid-red);
+        }
+
+
+        .verify-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--vivid-red);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .verify-btn:hover {
+            background: #b00202;
+        }
+
+        .verification-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .verification-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--vivid-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--vivid-red);
+        }
+
+        .about-card h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(214, 3, 2, 0.1);
+            color: var(--vivid-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .team-section {
+            margin: 4rem 0;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--vivid-red);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--dark-blue);
+        }
+
+        .member-role {
+            color: var(--vivid-red);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .member-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* About Leadership Section */
+        .about-leader-section {
+            padding: 5rem 0;
+            background: linear-gradient(to right, #f8f9fa 70%, #f0f4ff 30%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-leader-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .leader-content {
+            padding-right: 2rem;
+        }
+
+        .leader-content h2 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .leader-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--vivid-red);
+            border-radius: 2px;
+        }
+
+        .leader-content p {
+            color: var(--dark-text);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .leader-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .leader-stat {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .leader-stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .leader-stat h3 {
+            color: var(--vivid-red);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-stat p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+
+        .leader-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .leader-image img {
+            width: 200%;
+            height: 200%;
+            max-width: 400px;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 5px solid white;
+            transition: transform 0.5s ease;
+        }
+
+        .leader-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .leader-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 30px;
+            background: var(--vivid-red);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(214, 3, 2, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .leader-badge h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+        }
+
+        .leader-badge p {
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+
+        .leader-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .leader-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-blue);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .leader-social a:hover {
+            background: var(--vivid-red);
+            transform: translateY(-3px);
+        }
+
+        /* Existing styles remain unchanged */
+
+        /* ========================= */
+        /* Responsive Design - Mobile */
+        /* ========================= */
+        @media (max-width: 768px) {
+            .about-leader-container {
+                display: flex;
+                flex-direction: column;
+                /* Stack content vertically */
+                gap: 2rem;
+            }
+
+            /* Ensure leader content comes first */
+            .leader-content {
+                order: 1;
+                /* Heading + text first */
+                text-align: center;
+                padding-right: 0;
+            }
+
+            /* Image comes after the content */
+            .leader-image {
+                order: 2;
+                /* Image below the text */
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .leader-image img {
+                width: 80%;
+                height: auto;
+                max-width: 280px;
+                border-radius: 0.8rem;
+            }
+
+            /* Adjust heading for mobile */
+            .leader-content h2 {
+                font-size: 2rem;
+            }
+
+            .leader-content h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+            }
+
+            /* Adjust text size */
+            .leader-content p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Stats below the image */
+            .leader-stats {
+                order: 3;
+                grid-template-columns: 1fr;
+                /* One per row */
+                gap: 1.2rem;
+                margin-top: 1.5rem;
+            }
+
+            /* Badge below the image */
+            .leader-badge {
+                position: static;
+                margin: 1rem auto 0;
+                text-align: center;
+                padding: 0.7rem 1.2rem;
+                border-radius: 0.8rem;
+            }
+
+            /* Social icons centered */
+            .leader-social {
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+        }
+
+
+        /* Background elements */
+        /* .leader-bg-element {
+            position: absolute;
+            z-index: 1;
+        } */
+
+        /* .leader-bg-element-1 {
+            top: 20%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            background: rgba(214, 3, 2, 0.1);
+            border-radius: 50%;
+        }
+
+        .leader-bg-element-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: rgba(1, 20, 51, 0.1);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        } */
+        /* @media (max-width: 900px) {
+            .about-leader-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .leader-content {
+                padding-right: 0;
+                order: 2;
+            }
+            
+            .leader-image {
+                order: 1;
+            }
+            
+            .about-leader-section {
+                background: linear-gradient(to bottom, #f8f9fa 60%, #f0f4ff 40%);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .leader-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .leader-content h2 {
+                font-size: 2rem;
+            }
+            
+            .leader-badge {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                margin-top: 2rem;
+            }
+        } */
+        /* Feedback Section */
+        .feedback-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feedback-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .feedback-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 5rem;
+            color: rgba(214, 3, 2, 0.1);
+            font-family: Georgia, serif;
+        }
+
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feedback-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--vivid-red);
+        }
+
+        .feedback-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feedback-name {
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+
+        .feedback-role {
+            color: var(--vivid-red);
+            font-size: 0.9rem;
+        }
+
+        .feedback-content {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .feedback-rating {
+            color: gold;
+            margin-top: 1rem;
+        }
+
+        /* Contact Section */
+        /* Contact Section */
+        .contact-section {
+            background: var(--gray-light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(214, 3, 2, 0.1);
+            color: var(--vivid-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: var(--dark-blue);
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--gray-light);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--vivid-red);
+            box-shadow: 0 0 0 3px rgba(214, 3, 2, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--vivid-red);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--vivid-red);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Course Details Page
+        .course-details-page {
+            display: none;
+            padding-top: 8rem;
+            min-height: 100vh;
+        }
+
+        .course-details-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .course-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .course-hero-image {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .course-hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .course-hero-content h1 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+
+        .course-price-large {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .course-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .course-description {
+            margin: 3rem 0;
+        }
+
+        .course-description h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .course-includes {
+            margin: 2rem 0;
+        }
+
+        .includes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .include-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .include-icon {
+            color: var(--primary);
+        }
+
+        .instructor-section {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--gray-light);
+            border-radius: 1rem;
+        }
+
+        .instructor-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .instructor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instructor-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .instructor-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials-section {
+            margin: 3rem 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--gray-light);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+        }
+
+        .enroll-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--primary-light);
+            border-radius: 1rem;
+            color: white;
+        } */
+         
+/* Improved Course Details Page Styles */
+.course-details-page {
+    display: none;
+    padding-top: 8rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.course-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.course-details-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(1, 20, 51, 0.05) 0%, rgba(214, 3, 2, 0.05) 100%);
+    z-index: 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    color: var(--dark-blue);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--gray-light);
+    z-index: 2;
+    position: relative;
+}
+
+.back-button:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    color: var(--vivid-red);
+}
+
+.course-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.course-hero-image {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    height: fit-content;
+}
+
+.course-hero-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.course-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.course-hero-image:hover img {
+    transform: scale(1.05);
+}
+
+.course-hero-content {
+    position: relative;
+}
+
+.course-hero-content h1 {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.course-hero-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--vivid-red);
+    border-radius: 2px;
+}
+
+.course-price-large {
+    font-size: 2rem;
+    color: var(--vivid-red);
+    font-weight: 700;
+    margin: 1.5rem 0;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(214, 3, 2, 0.1);
+    border-radius: 0.5rem;
+}
+
+.course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: var(--gray-light);
+    border-radius: 1rem;
+}
+
+.course-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.course-meta-item i {
+    color: var(--vivid-red);
+}
+
+.course-hero-content p {
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.course-action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.course-action-buttons .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.course-includes {
+    margin: 3rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.course-includes h2 {
+    color: var(--dark-blue);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.course-includes h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--vivid-red);
+    border-radius: 2px;
+}
+
+.includes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.include-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--vivid-red);
+}
+
+.include-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.include-icon {
+    color: var(--vivid-red);
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(214, 3, 2, 0.1);
+    border-radius: 50%;
+}
+
+.course-description {
+    margin: 3rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.course-description h2 {
+    color: var(--dark-blue);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.course-description h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--vivid-red);
+    border-radius: 2px;
+}
+
+#detail-full-description {
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+#detail-full-description p {
+    margin-bottom: 1.5rem;
+}
+
+.learning-outcomes {
+    margin: 3rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.learning-outcomes h2 {
+    color: var(--dark-blue);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.learning-outcomes h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--vivid-red);
+    border-radius: 2px;
+}
+
+#detail-learning-outcomes {
+    list-style: none;
+    padding: 0;
+}
+
+#detail-learning-outcomes li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--gray);
+    border-bottom: 1px solid var(--gray-light);
+}
+
+#detail-learning-outcomes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--vivid-red);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.instructor-section {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 3rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 1rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.instructor-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.instructor-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.instructor-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-blue);
+}
+
+.instructor-role {
+    color: var(--vivid-red);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(214, 3, 2, 0.1);
+    border-radius: 2rem;
+    font-size: 0.9rem;
+}
+
+.instructor-info p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+.testimonials-section {
+    margin: 3rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonials-section h2 {
+    color: var(--dark-blue);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.testimonials-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--vivid-red);
+    border-radius: 2px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-top: 5px solid var(--vivid-red);
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 5rem;
+    color: rgba(214, 3, 2, 0.1);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+.enroll-section {
+    text-align: center;
+    margin: 3rem 0;
+    padding: 3rem;
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--navy-blue) 100%);
+    border-radius: 1rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.enroll-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23D60302' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    z-index: 0;
+    pointer-events: none;
+}
+
+.enroll-section h2 {
+    color: rgb(247, 244, 244);
+    margin-bottom: 1rem;
+}
+
+.enroll-section p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.enroll-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--vivid-red);
+    color: rgb(252, 252, 252);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(214, 3, 2, 0.3);
+}
+
+.enroll-cta:hover {
+    background: #f4f0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(214, 3, 2, 0.4);
+    color: rgb(255, 255, 255);
+}
+
+/* Responsive styles for course details page */
+@media (max-width: 1024px) {
+    .course-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .course-hero-image {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+/* 
+@media (max-width: 768px) {
+    .course-details-container {
+        padding: 1.5rem;
+        border-radius: 1rem;
+    }
+    
+    .course-hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .course-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .includes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .instructor-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-action-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-details-container {
+        padding: 1rem;
+    }
+    
+    .course-hero-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .course-price-large {
+        font-size: 1.5rem;
+    }
+    
+    .enroll-section {
+        padding: 2rem 1rem;
+    }
+} */
+        /* Certificate Verification Page */
+        .certificate-page {
+            display: none;
+            padding-top: 8rem;
+            min-height: 100vh;
+        }
+
+        .certificate-container-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .certificate-form {
+            margin: 2rem 0;
+        }
+
+        /* Open Positions Section */
+        .positions-section {
+            background: var(--gray-light);
+            padding: 5rem 0;
+        }
+
+        .positions-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .positions-list {
+            margin-top: 2rem;
+        }
+
+        .position-item {
+            padding: 1.5rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .position-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .position-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .position-department {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .position-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .position-requirements {
+            margin-bottom: 1rem;
+        }
+
+        .position-requirements h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .position-requirements ul {
+            padding-left: 1.5rem;
+            color: var(--gray);
+        }
+
+        .position-apply {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .position-apply:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .no-positions {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+
+            .hero-content,
+            .certificate-container,
+            .contact-container,
+            .course-hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .course-card,
+            .team-member {
+                flex: 0 0 calc(50% - 1rem);
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-menu,
+            .nav-actions {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .courses-grid,
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .verification-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .course-card,
+            .team-member {
+                flex: 0 0 100%;
+            }
+
+            .instructor-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--dark-blue);
+            z-index: 1001;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-link {
+            color: white;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-actions {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            5% {
+                transform: scaleY(0.1);
+            }
+
+            10% {
+                transform: scaleY(1);
+            }
+        }
+
+        .animate {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .slide-left {
+            animation: slideInLeft 1s ease-out forwards;
+        }
+
+        .slide-right {
+            animation: slideInRight 1s ease-out forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .float {
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="Images\msn-logo.jpg" alt="MSN Academy Logo">
+            </a>
+
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#certificate" class="nav-link">Certificate</a>
+                <a href="#team" class="nav-link">Team</a>
+                <a href="#feedback" class="nav-link">Feedback</a>
+                <a href="#positions" class="nav-link">Careers</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#courses" class="btn btn-primary">Join Now</a>
+            </div>
+
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="#" class="logo">
+                <img src="Images\msn-logo.jpg" alt="MSN Academy Logo">
+            </a>
+            <div class="close-menu" id="close-menu">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <nav class="mobile-nav">
+            <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#courses" class="mobile-nav-link">Courses</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#certificate" class="mobile-nav-link">Certificate</a>
+            <a href="#team" class="mobile-nav-link">Team</a>
+            <a href="#feedback" class="mobile-nav-link">Feedback</a>
+            <a href="#positions" class="mobile-nav-link">Careers</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+        </nav>
+
+        <div class="mobile-nav-actions">
+            <a href="#" class="btn btn-outline" style="width: 100%; text-align: center; margin-bottom: 1rem;">Login</a>
+            <a href="#courses" class="btn btn-primary" style="width: 100%; text-align: center;">Join Now</a>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <div class="hero-text slide-left">
+                    <h1>Empower Your Future with <span style="color: #D60302;">MSN Academy</span> Today</h1>
+                    <p>At MSN Academy,we are dedicated to equipping aspiring freelancers and developers in Pakistan with
+                        the skills they need to thrive in the digital landscape. Our mission is to provide practical,
+                        job-ready training that empowers you to achieve your career goals.</p>
+
+                    <div class="hero-actions">
+                        <a href="#courses" class="btn btn-primary pulse">Enroll Now</a>
+                        <a href="#contact" class="btn btn-outline" style="border-color: white; color: white;">Contact
+                            Us</a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Students</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Courses</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image slide-right">
+                    <a href="https://youtube.com/playlist?list=PLZbMaGH5VmjXJXvoMK4LHcZGq83pLAM1A&si=4D3rHMrbG0GIlmjc"
+                        target="_blank" class="video-link">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                            alt="Students Learning">
+                        <div class="play-btn float">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Popular Courses</h2>
+                    <p>Choose from our comprehensive range of courses designed to boost your career in tech</p>
+                </div>
+
+                <div class="courses-slider-container">
+                    <div class="courses-slider" id="courses-slider">
+                        <!-- Course 1 -->
+                        <div class="course-card" data-course-id="1">
+                            <div class="course-image">
+                                <a href="https://www.youtube.com/watch?v=oTy5COzwsew" target="_blank">
+                                    <img src="Images/dataanalysiscourse2.png" alt="Data Analyst Course">
+                                </a>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <h3 class="course-title">Data Analyst</h3>
+                                    <div class="course-price">PKR 55</div>
+                                </div>
+                                <p>Learn comprehensive data analysis to elevate your skills and career.</p>
+                                <div class="course-info">
+                                    <div class="course-rating">
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                    <div class="course-students">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <span>150 students</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div class="course-card" data-course-id="2">
+                            <div class="course-image">
+                                <a href="https://www.youtube.com/watch?v=TLLoZ3ECwfc" target="_blank"></a>
+                                <img src="Images/pythoncourse.png" alt="Python Programming Course">
+                                </a>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <h3 class="course-title">Python Programming</h3>
+                                    <div class="course-price">PKR 45</div>
+                                </div>
+                                <p>Master Python programming from basics to advanced concepts.</p>
+                                <div class="course-info">
+                                    <div class="course-rating">
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                    <div class="course-students">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <span>200 students</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div class="course-card" data-course-id="3">
+                            <div class="course-image">
+                                <a href="https://www.youtube.com/watch?v=KLGIcMBn45A" target="_blank">
+                                    <img src="Images/top-generative-ai-companies.avif" alt="Generative AI Course">
+                                </a>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <h3 class="course-title">Generative AI</h3>
+                                    <div class="course-price">PKR 65</div>
+                                </div>
+                                <p>Explore the cutting-edge world of Generative Artificial Intelligence.</p>
+                                <div class="course-info">
+                                    <div class="course-rating">
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                        <span>4.9</span>
+                                    </div>
+                                    <div class="course-students">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <span>120 students</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 4 -->
+                        <div class="course-card" data-course-id="4">
+                            <div class="course-image">
+                                <a href="https://www.youtube.com/watch?v=m1u_QqJfVHQ" target="_blank">
+                                    <img src="Images/softwaredevelopment2.png" alt="Software Engineering Course">
+                            </div>
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <h3 class="course-title">Software Engineering</h3>
+                                    <div class="course-price">PKR 60</div>
+                                </div>
+                                <p>Master software engineering with ASP.NET Core.</p>
+                                <div class="course-info">
+                                    <div class="course-rating">
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                    <div class="course-students">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <span>180 students</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 5 -->
+                        <div class="course-card" data-course-id="5">
+                            <div class="course-image">
+                                <a href="https://www.youtube.com/watch?v=hmLzngMddAc" target="_blank">
+                                    <img src="Images/graphicdesigncourse.png" alt="Graphic Design Course">
+                                </a>
+                            </div>
+                            <div class="course-content">
+                                <div class="course-header">
+                                    <h3 class="course-title">Graphic Designing</h3>
+                                    <div class="course-price">PKR 50</div>
+                                </div>
+                                <p>Full Stack Graphic Designing with UI UX.</p>
+                                <div class="course-info">
+                                    <div class="course-rating">
+                                        <i class="fas fa-star" style="color: gold;"></i>
+                                        <span>4.7</span>
+                                    </div>
+                                    <div class="course-students">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <span>160 students</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="slider-arrow prev-arrow" id="courses-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-arrow next-arrow" id="courses-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="slider-dots" id="courses-dots">
+                        <!-- Dots will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About MSN Academy</h2>
+                    <p>Learn about our mission, vision, and core values</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-card slide-left">
+                        <h3><i class="fas fa-eye"></i> Vision</h3>
+                        <p>To become the most successful nation-building academy, empowering individuals with in-demand
+                            tech skills, innovation, and a growth mindset to shape the future of Pakistan and beyond.
+                        </p>
+                    </div>
+
+                    <div class="about-card slide-right">
+                        <h3><i class="fas fa-bullseye"></i> Mission</h3>
+                        <p>At MSN Academy, we are committed to:</p>
+                        <ul>
+                            <li>Providing high-quality, affordable education</li>
+                            <li>Bridging the gap between academia and industry</li>
+                            <li>Creating job-ready individuals through practical learning, mentorship, and real-world
+                                projects</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <h2>Our Core Values</h2>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card animate delay-1">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Integrity & Transparency</h3>
+                        <p>We believe in honest communication and ethical practices in all our operations.</p>
+                    </div>
+
+                    <div class="value-card animate delay-2">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Innovation & Excellence</h3>
+                        <p>We continuously strive for innovation and excellence in our teaching methodologies.</p>
+                    </div>
+
+                    <div class="value-card animate delay-3">
+                        <div class="value-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Student-Centric Growth</h3>
+                        <p>Our students' success is at the heart of everything we do.</p>
+                    </div>
+
+                    <div class="value-card animate delay-1">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Diversity & Inclusion</h3>
+                        <p>We welcome and value students from all backgrounds and experiences.</p>
+                    </div>
+
+                    <div class="value-card animate delay-2">
+                        <div class="value-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Empowerment through Knowledge</h3>
+                        <p>We believe knowledge is the key to personal and professional empowerment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Leader -->
+        <section class="about-leader-section">
+            <div class="leader-bg-element leader-bg-element-1"></div>
+            <div class="leader-bg-element leader-bg-element-2"></div>
+
+            <div class="about-leader-container">
+                <div class="leader-content">
+                    <h2>Meet Muhammad Suleman: Visionary Leader of MSN Academy</h2>
+                    <p>As the Founder and CEO of MSN Academy, Muhammad Suleman brings a wealth of experience in data
+                        analysis and digital technologies. His mission is to empower aspiring freelancers and developers
+                        in Pakistan with practical skills for a successful career.</p>
+
+                    <div class="leader-stats">
+                        <div class="leader-stat">
+                            <h3>Vision</h3>
+                            <p>Empowering youth through practical, job-ready skills.</p>
+                        </div>
+                        <div class="leader-stat">
+                            <h3>Experience</h3>
+                            <p>Mentoring in Python, data science, and freelancing.</p>
+                        </div>
+                    </div>
+
+                    <div class="leader-social">
+                        <a href="https://www.linkedin.com/in/muhammad-suleman-1b88261b5/"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="leader-image">
+                    <img src="Images\founder.png" alt="Muhammad Suleman">
+                    <div class="leader-badge">
+                        <h4>CEO & Founder</h4>
+                        <p>MSN Academy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Certificate Verification Section -->
+        <section id="certificate" class="certificate-section section">
+            <div class="container certificate-container">
+                <div class="verification-form slide-left">
+                    <h3>Certificate Verification</h3>
+                    <p>Easily verify your certificate from MSN Academy. Select your role and enter your ID to access
+                        your credentials.</p>
+
+                    <div class="form-group">
+                        <label for="role">Select Your Role</label>
+                        <select id="role">
+                            <option value="">Choose role...</option>
+                            <option value="student">Student</option>
+                            <option value="instructor">Instructor</option>
+                            <option value="competitors">Competitors</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="certificate-id">Enter your Certificate ID</label>
+                        <input type="text" id="certificate-id" placeholder="e.g., MSN-2024-001">
+                    </div>
+
+                    <button class="verify-btn" id="verify-certificate">Verify Certificate</button>
+
+                    <div class="verification-result" id="verification-result">
+                        <!-- Result will be displayed here -->
+                    </div>
+
+                    <div class="verification-steps">
+                        <div class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <h4>Choose Role</h4>
+                            <p>Select Student, Instructor or Competitor</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4>Enter ID</h4>
+                            <p>Provide certificate ID</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <h4>View Certificate</h4>
+                            <p>Access your credentials</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certificate-info slide-right">
+                    <h2>Certificate Verification Made Simple</h2>
+                    <p>Easily verify your certificate instantly from MSN Academy. Select your role and enter your ID to
+                        get started.</p>
+
+                    <div
+                        style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 1rem; margin-top: 2rem;">
+                        <img src="Images\Student Course Completion Certificate.png" alt="Sample Certificate"
+                            style="width: 100%; border-radius: 0.5rem;">
+                        <h4 style="text-align: center; margin-top: 1rem;">Sample Certificate</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Meet Our Management Team</h2>
+                    <p>The dedicated professionals driving MSN Academy's mission forward</p>
+                </div>
+
+                <div class="team-slider-container">
+                    <div class="team-slider" id="management-slider">
+                        <!-- Management Team Member 1 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\dataanalyst.png" alt="Muhammad Suleman Nagri">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Muhammad Suleman Nagri</h3>
+                                <div class="member-role">CEO</div>
+                                <p class="member-desc">Passionate about mentoring in data science and freelancing.</p>
+                            </div>
+                        </div>
+
+                        <!-- Management Team Member 2 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                    alt="Ashba Azeem">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Ashba Azeem</h3>
+                                <div class="member-role">Content Manager</div>
+                                <p class="member-desc">Specializes in managing and creating engaging digital content.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Management Team Member 3 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\contentcreator.png" alt="Haadya">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Haadya</h3>
+                                <div class="member-role">Content Marketing Member</div>
+                                <p class="member-desc">Expert in content strategy and digital marketing.</p>
+                            </div>
+                        </div>
+
+                        <!-- Management Team Member 4 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\developmentlead.png" alt="Daniyal Ahmed">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Daniyal Ahmed</h3>
+                                <div class="member-role">Development Lead</div>
+                                <p class="member-desc">Oversees technical development and implementation.</p>
+                            </div>
+                        </div>
+
+                        <!-- Management Team Member 5 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\HR.png" alt="Rija Khan">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Rija Khan</h3>
+                                <div class="member-role">HR Manager</div>
+                                <p class="member-desc">Expert in employee relations and administrative HR processes.</p>
+                            </div>
+                        </div>
+
+                        <!-- Management Team Member 6 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\strategicfinance.png" alt="Laraib Ali">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Laraib Ali</h3>
+                                <div class="member-role">Strategic Finance Lead</div>
+                                <p class="member-desc">Manages financial planning and strategic investments.</p>
+                            </div>
+                        </div>
+
+                        <!-- Management Team Member 7 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                    alt="Najm Ur Rehman">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Najm Ur Rehman</h3>
+                                <div class="member-role">Technical Mentor</div>
+                                <p class="member-desc">Provides technical guidance and mentorship to students.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="slider-arrow prev-arrow" id="management-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-arrow next-arrow" id="management-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="slider-dots" id="management-dots">
+                        <!-- Dots will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 5rem;">
+                    <h2>Meet Our Trainers</h2>
+                    <p>Our expert trainers with industry experience and teaching excellence</p>
+                </div>
+
+                <div class="team-slider-container">
+                    <div class="team-slider" id="trainers-slider">
+                        <!-- Trainer 1 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\graphicdesign.png" alt="Muhammad Furqan">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Muhammad Furqan</h3>
+                                <div class="member-role">Full Stack Graphic Designing Trainer</div>
+                                <p class="member-desc">Expert in UI/UX design and graphic design principles.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 2 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                    alt="Bissam Akbar">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Bissam Akbar</h3>
+                                <div class="member-role">Digital Marketing Trainer</div>
+                                <p class="member-desc">Specializes in SEO, SEM, and social media marketing strategies.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 3 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\webdeveloper.png" alt="Fizza Khokhar">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Fizza Khokhar</h3>
+                                <div class="member-role">Full Stack Developer | Frontend Trainer</div>
+                                <p class="member-desc">Expert in React, Angular, and modern frontend technologies.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 4 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                    alt="Najm Ur Rehman">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Najm Ur Rehman</h3>
+                                <div class="member-role">Full Stack Developer | App Dev and MERN Stack Trainer</div>
+                                <p class="member-desc">Specializes in MERN stack and mobile application development.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 5 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\dataanalyst.png" alt="Muhammad Suleman Nagri">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Muhammad Suleman Nagri</h3>
+                                <div class="member-role">Data Analyst Trainer</div>
+                                <p class="member-desc">Expert in data analysis, visualization, and statistical modeling.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 6 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                    alt="Daniyal Ahmed">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Daniyal Ahmed</h3>
+                                <div class="member-role">Frontend Trainer</div>
+                                <p class="member-desc">Specializes in HTML, CSS, JavaScript and modern frontend
+                                    frameworks.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 7 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\CP.png" alt="Abdul Rafay Mughal">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Abdul Rafay Mughal</h3>
+                                <div class="member-role">Competitive Programming Trainer</div>
+                                <p class="member-desc">Expert in algorithms, data structures, and competitive
+                                    programming.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 8 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="Images\python.png" alt="Faseeh Siddique">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Faseeh Siddique</h3>
+                                <div class="member-role">Python Programming Trainer</div>
+                                <p class="member-desc">Specializes in Python programming and its applications.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 9 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                    alt="Syed Abdul Wasay">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Syed Abdul Wasay</h3>
+                                <div class="member-role">Gen AI Trainer</div>
+                                <p class="member-desc">Expert in Generative AI and machine learning technologies.</p>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 10 -->
+                        <div class="team-member">
+                            <div class="member-image">
+                                <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                                    alt="Syed Abdul Wahab">
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Syed Abdul Wahab</h3>
+                                <div class="member-role">ASP .Net Core Trainer</div>
+                                <p class="member-desc">Full stack Software Engineer specializing in .NET technologies.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="slider-arrow prev-arrow" id="trainers-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-arrow next-arrow" id="trainers-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="slider-dots" id="trainers-dots">
+                        <!-- Dots will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Student & Intern Feedback</h2>
+                    <p>Read what our students and interns have to say about their experience at MSN Academy</p>
+                </div>
+
+                <div class="feedback-container">
+                    <div class="feedback-card slide-left">
+                        <div class="feedback-header">
+                            <div class="feedback-avatar">
+                                <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                                    alt="Student 1">
+                            </div>
+                            <div>
+                                <div class="feedback-name">Ahmed Raza</div>
+                                <div class="feedback-role">Data Analysis Student</div>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <p>"The Data Analysis course transformed my career. The practical approach to learning
+                                helped me secure a job in data analysis. The instructors were knowledgeable and
+                                supportive throughout the journey."</p>
+                        </div>
+                        <div class="feedback-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card slide-right">
+                        <div class="feedback-header">
+                            <div class="feedback-avatar">
+                                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                                    alt="Intern 1">
+                            </div>
+                            <div>
+                                <div class="feedback-name">Sara Khan</div>
+                                <div class="feedback-role">Web Development Intern</div>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <p>"The internship program provided real-world experience and mentorship that was
+                                invaluable. I worked on live projects and gained confidence in my coding skills. Highly
+                                recommended!"</p>
+                        </div>
+                        <div class="feedback-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card slide-left">
+                        <div class="feedback-header">
+                            <div class="feedback-avatar">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                                    alt="Student 2">
+                            </div>
+                            <div>
+                                <div class="feedback-name">Bilal Ahmed</div>
+                                <div class="feedback-role">Python Programming Student</div>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <p>"The instructors are experts in their field and provide personalized attention. The
+                                course material was comprehensive and up-to-date with industry standards. I landed a job
+                                as a Python developer after completion."</p>
+                        </div>
+                        <div class="feedback-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+
+                    <div class="feedback-card slide-right">
+                        <div class="feedback-header">
+                            <div class="feedback-avatar">
+                                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                                    alt="Intern 2">
+                            </div>
+                            <div>
+                                <div class="feedback-name">Fatima Noor</div>
+                                <div class="feedback-role">Digital Marketing Intern</div>
+                            </div>
+                        </div>
+                        <div class="feedback-content">
+                            <p>"I enjoyed working on live projects and the supportive community at MSN Academy. The
+                                internship helped me build a strong portfolio and understand the practical aspects of
+                                digital marketing."</p>
+                        </div>
+                        <div class="feedback-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Positions Section -->
+        <section id="positions" class="positions-section section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Open Positions</h2>
+                    <p>Join our team of dedicated professionals shaping the future of education</p>
+                </div>
+
+                <div class="positions-container">
+                    <div class="positions-list" id="positions-list">
+                        <div class="no-positions">
+                            <i class="fas fa-briefcase" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3>No positions available right now</h3>
+                            <p>Check back later for new opportunities to join our team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Get In Touch</h2>
+                    <p>Have questions about our courses or need assistance? Reach out to us!</p>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-info slide-left">
+                        <h3>Contact Information</h3>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>msn.academy269@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+92 324 8290853</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>Pakistan</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem;">
+                            <h4>Follow Us</h4>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <a href="https://www.linkedin.com/company/msn-academy269/posts/?feedView=all"
+                                    target="_blank"
+                                    style="display: inline-block; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fab fa-linkedin-in" style="color: #0A66C2; font-size: 20px;"></i>
+                                </a>
+                                <a href="https://www.instagram.com/msn_academytech?igsh=c3QxY3ZsMnlyNzdl"
+                                    target="_blank"
+                                    style="display: inline-block; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fab fa-instagram" style="color: #E4405F; font-size: 20px;"></i>
+                                </a>
+                                <a href="https://www.facebook.com/people/MSN-Academy/61564445365771/"
+                                    style="display: inline-block; width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fab fa-facebook-f" style="color: #1877F2; font-size: 20px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form slide-right">
+                        <h3>Send us a Message</h3>
+
+                        <form>
+                            <input type="text" class="form-input" placeholder="Your Name">
+                            <input type="email" class="form-input" placeholder="Your Email">
+                            <textarea class="form-input" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-col">
+                        <a href="#" class="logo" style="color: white; margin-bottom: 1.5rem; display: inline-block;">
+                            <img src="Images\msn-logo.jpg" alt="MSN Academy Logo">
+                        </a>
+                        <p>Empowering individuals with in-demand tech skills, innovation, and a growth mindset.</p>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#courses">Courses</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#certificate">Certificate Verification</a></li>
+                            <li><a href="#team">Team</a></li>
+                            <li><a href="#feedback">Feedback</a></li>
+                            <li><a href="#positions">Open Positions</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Courses</h4>
+                        <ul class="footer-links">
+                            <li><a href="#" data-course-id="1">Data Analyst</a></li>
+                            <li><a href="#" data-course-id="2">Python Programming</a></li>
+                            <li><a href="#" data-course-id="3">Generative AI</a></li>
+                            <li><a href="#" data-course-id="4">Software Engineering</a></li>
+                            <li><a href="#" data-course-id="5">Graphic Designing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> msn.academy269@gmail.com
+                            </li>
+                            <li><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +92 324 8290853</li>
+                            <li><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i> Pakistan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Course Details Page (Hidden by default) -->
+    <div id="course-details-page" class="course-details-page">
+        <div class="container course-details-container">
+            <div class="back-button" id="back-to-courses">
+                <i class="fas fa-arrow-left"></i> Back to Courses
+            </div>
+
+            <div class="course-hero">
+                <div class="course-hero-image">
+                    <img id="detail-course-image" src="" alt="Course Image">
+                </div>
+
+                <div class="course-hero-content">
+                    <h1 id="detail-course-title"></h1>
+                    <div class="course-price-large" id="detail-course-price"></div>
+
+                    <div class="course-meta">
+                        <div class="course-meta-item">
+                            <i class="fas fa-star" style="color: gold;"></i>
+                            <span id="detail-course-rating"></span>
+                        </div>
+                        <div class="course-meta-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <span id="detail-course-students"></span>
+                        </div>
+                        <div class="course-meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span id="detail-course-duration"></span>
+                        </div>
+                    </div>
+
+                    <p id="detail-course-description"></p>
+
+                    <a href="https://forms.gle/c82S9HnVPQCKf1vE8" target="_blank" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="course-includes">
+                <h2>What's Included</h2>
+                <div class="includes-grid">
+                    <div class="include-item">
+                        <i class="fas fa-laptop-code include-icon"></i>
+                        <span>Hands-on projects</span>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-infinity include-icon"></i>
+                        <span>Lifetime access</span>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-chalkboard-teacher include-icon"></i>
+                        <span>Expert instruction</span>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-users include-icon"></i>
+                        <span>Community support</span>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-calendar-alt include-icon"></i>
+                        <span>Flexible schedule</span>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-video include-icon"></i>
+                        <span>Weekly live sessions</span>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-certificate include-icon"></i>
+                        <span>Certification upon completion</span>
+                    </div>
+                    <div class="include-item">
+                        <i class="fas fa-book include-icon"></i>
+                        <span>Resource material included</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-description">
+                <h2>Course Overview</h2>
+                <div id="detail-full-description"></div>
+            </div>
+
+            <div class="course-description">
+                <h2>Learning Outcomes</h2>
+                <ul id="detail-learning-outcomes"></ul>
+            </div>
+
+            <div class="instructor-section">
+                <div class="instructor-image">
+                    <img id="detail-instructor-image" src="" alt="Instructor">
+                </div>
+                <div class="instructor-info">
+                    <h3 id="detail-instructor-name"></h3>
+                    <div class="instructor-role" id="detail-instructor-role"></div>
+                    <p id="detail-instructor-bio"></p>
+                </div>
+            </div>
+
+            <div class="testimonials-section">
+                <h2>Student Testimonials</h2>
+                <div class="testimonials-grid" id="detail-testimonials">
+                    <!-- Testimonials will be added here -->
+                </div>
+            </div>
+
+            <div class="enroll-section">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join hundreds of students who have transformed their careers with our courses</p>
+                <a href="https://forms.gle/c82S9HnVPQCKf1vE8" target="_blank" class="enroll-cta"
+                    style="background: rgb(231, 9, 9); color: var(--primary); margin-top: 1rem;">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Verification Page -->
+    <div id="certificate-page" class="certificate-page">
+        <div class="container certificate-container-page">
+            <div class="back-button" id="back-to-main">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </div>
+
+            <h2>Certificate Verification</h2>
+            <p>Verify your certificate from MSN Academy. Select your role and enter your ID to access your credentials.
+            </p>
+
+            <div class="certificate-form">
+                <div class="form-group">
+                    <label for="cert-role">Select Your Role</label>
+                    <select id="cert-role">
+                        <option value="">Choose role...</option>
+                        <option value="student">Student</option>
+                        <option value="instructor">Instructor</option>
+                        <option value="competitors">Competitors</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="certificate-id">Enter your Certificate ID</label>
+                    <input type="text" id="certificate-id-input" placeholder="e.g., MSN-2024-001">
+                </div>
+
+                <button class="verify-btn" id="verify-certificate-btn">Verify Certificate</button>
+
+                <div class="verification-result" id="certificate-result">
+                    <!-- Result will be displayed here -->
+                </div>
+            </div>
+
+            <div class="verification-steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Choose Role</h4>
+                    <p>Select Student, Instructor or Competitor</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>Enter ID</h4>
+                    <p>Provide certificate ID</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h4>View Certificate</h4>
+                    <p>Access your credentials</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course data
+        const courses = {
+            1: {
+                title: "Data Analyst",
+                price: "PKR 55",
+                image: "Images/dataanalysiscourse2.png",
+                rating: "4.9",
+                students: "150 students",
+                duration: "8 weeks",
+                description: "Learn comprehensive data analysis to elevate your skills and career.",
+                fullDescription: "<p>This comprehensive Data Analyst course will equip you with the skills needed to transform raw data into valuable insights. You'll learn how to use industry-standard tools and techniques to analyze data, create visualizations, and make data-driven decisions.</p><p>Our hands-on approach ensures that you'll gain practical experience working with real datasets and solving actual business problems. By the end of this course, you'll be proficient in data cleaning, analysis, visualization, and storytelling with data.</p>",
+                instructor: {
+                    name: "Muhammad Suleman Nagri",
+                    role: "Data Analyst Trainer",
+                    bio: "Expert in data analysis, visualization, and statistical modeling with over 5 years of industry experience.",
+                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                },
+                learningOutcomes: [
+                    "Master data cleaning and preprocessing techniques",
+                    "Create compelling data visualizations",
+                    "Perform statistical analysis on datasets",
+                    "Build interactive dashboards",
+                    "Tell stories with data to drive business decisions"
+                ],
+                testimonials: [
+                    {
+                        text: "This course transformed my career. I landed a data analyst job right after completion!",
+                        author: "Ahmed Raza"
+                    },
+                    {
+                        text: "The practical approach and real-world projects made all the difference. Highly recommended!",
+                        author: "Sara Khan"
+                    }
+                ]
+            },
+            2: {
+                title: "Python Programming",
+                price: "PKR 45",
+                image: "Images/pythoncourse.png",
+                rating: "4.8",
+                students: "200 students",
+                duration: "6 weeks",
+                description: "Master Python programming from basics to advanced concepts.",
+                fullDescription: "<p>This Python Programming course is designed for both beginners and those with some programming experience. You'll start with the fundamentals and progress to advanced topics like object-oriented programming, working with APIs, and data analysis with pandas.</p><p>Through practical exercises and projects, you'll build a strong foundation in Python that can be applied to various domains including web development, data science, automation, and more.</p>",
+                instructor: {
+                    name: "Faseeh Siddique",
+                    role: "Python Programming Trainer",
+                    bio: "Specializes in Python programming and its applications with 4 years of teaching experience.",
+                    image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                },
+                learningOutcomes: [
+                    "Understand Python syntax and programming concepts",
+                    "Work with data structures and functions",
+                    "Implement object-oriented programming principles",
+                    "Handle files and exceptions",
+                    "Build practical applications with Python"
+                ],
+                testimonials: [
+                    {
+                        text: "The instructors are experts in their field and provide personalized attention.",
+                        author: "Bilal Ahmed"
+                    },
+                    {
+                        text: "I went from zero to building my own applications in just 6 weeks!",
+                        author: "Fatima Noor"
+                    }
+                ]
+            },
+            3: {
+                title: "Generative AI",
+                price: "PKR 65",
+                image: "Images/top-generative-ai-companies.avif",
+                rating: "4.9",
+                students: "120 students",
+                duration: "10 weeks",
+                description: "Explore the cutting-edge world of Generative Artificial Intelligence.",
+                fullDescription: "<p>This Generative AI course delves into the fascinating world of AI models that can create new content. You'll learn about various generative models including GANs, VAEs, and transformer-based models like GPT.</p><p>The course combines theoretical understanding with hands-on projects where you'll build your own generative models for text, images, and more. You'll also explore ethical considerations and real-world applications of generative AI.</p>",
+                instructor: {
+                    name: "Syed Abdul Wasay",
+                    role: "Gen AI Trainer",
+                    bio: "Expert in Generative AI and machine learning technologies with research experience.",
+                    image: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                },
+                learningOutcomes: [
+                    "Understand different generative AI models",
+                    "Implement GANs and VAEs from scratch",
+                    "Fine-tune pre-trained language models",
+                    "Generate images, text, and other media",
+                    "Evaluate and improve generative models"
+                ],
+                testimonials: [
+                    {
+                        text: "Mind-blowing course! I'm now building my own AI models for creative projects.",
+                        author: "Usman Ali"
+                    },
+                    {
+                        text: "The future is here, and this course helped me become part of it.",
+                        author: "Ayesha Malik"
+                    }
+                ]
+            },
+            4: {
+                title: "Software Engineering with ASP.NET Core",
+                price: "PKR 60",
+                image: "Images/softwaredevelopment2.png",
+                rating: "4.8",
+                students: "180 students",
+                duration: "12 weeks",
+                description: "Master software engineering with ASP.NET Core.",
+                fullDescription: "<p>This Software Engineering course focuses on building robust, scalable applications using ASP.NET Core. You'll learn everything from basic programming concepts to advanced architectural patterns.</p><p>The course covers front-end and back-end development, database integration, security practices, and deployment strategies. By the end, you'll have the skills to develop full-stack applications and deploy them to production environments.</p>",
+                instructor: {
+                    name: "Syed Abdul Wahab",
+                    role: "ASP .Net Core Trainer",
+                    bio: "Full stack Software Engineer specializing in .NET technologies with 6 years of industry experience.",
+                    image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                },
+                learningOutcomes: [
+                    "Develop full-stack applications with ASP.NET Core",
+                    "Implement RESTful APIs and microservices",
+                    "Work with databases using Entity Framework",
+                    "Apply security best practices",
+                    "Deploy applications to cloud platforms"
+                ],
+                testimonials: [
+                    {
+                        text: "Comprehensive course that covered everything I needed to become a professional developer.",
+                        author: "Omar Farooq"
+                    },
+                    {
+                        text: "The projects were challenging but incredibly rewarding. Great learning experience!",
+                        author: "Zainab Ahmed"
+                    }
+                ]
+            },
+            5: {
+                title: "Full Stack Graphic Designing with UI UX",
+                price: "PKR 50",
+                image: "Images/graphicdesigncourse.png",
+                rating: "4.7",
+                students: "160 students",
+                duration: "8 weeks",
+                description: "Full Stack Graphic Designing with UI UX.",
+                fullDescription: "<p>This comprehensive Graphic Design course covers both traditional design principles and modern UI/UX practices. You'll learn how to create visually appealing designs that also provide excellent user experiences.</p><p>The course includes hands-on projects where you'll work with industry-standard tools like Adobe Creative Suite, Figma, and Sketch. You'll also learn about design thinking, user research, and prototyping techniques.</p>",
+                instructor: {
+                    name: "Muhammad Furqan",
+                    role: "Full Stack Graphic Designing Trainer",
+                    bio: "Expert in UI/UX design and graphic design principles with a portfolio of successful projects.",
+                    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                },
+                learningOutcomes: [
+                    "Master design principles and color theory",
+                    "Create wireframes and prototypes",
+                    "Design responsive user interfaces",
+                    "Conduct user research and testing",
+                    "Build a professional design portfolio"
+                ],
+                testimonials: [
+                    {
+                        text: "I went from beginner to landing freelance design projects in just 2 months!",
+                        author: "Hina Shahid"
+                    },
+                    {
+                        text: "The feedback from instructors was invaluable for improving my design skills.",
+                        author: "Ali Hassan"
+                    }
+                ]
+            }
+        };
+        // Mobile menu functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const overlay = document.getElementById('overlay');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Mobile nav links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll('.animate, .slide-left, .slide-right');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translate(0, 0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transition = 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out';
+                observer.observe(element);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Initialize all sliders
+            initSlider('courses');
+            initSlider('management');
+            initSlider('trainers');
+
+            // Reusable function to verify certificates using the API
+            // Reusable function to verify certificates using the correct API
+            async function verifyCertificate(role, certificateId, resultDiv) {
+                if (!role || !certificateId) {
+                    resultDiv.innerHTML = '<p style="color: #ff6b6b;">Please select a role and enter certificate ID</p>';
+                    resultDiv.style.display = 'block';
+                    return;
+                }
+
+                resultDiv.innerHTML = '<p>Verifying certificate...</p>';
+                resultDiv.style.display = 'block';
+
+                try {
+                    // Correct API endpoint
+                    const response = await fetch(
+                        `https://msn-certificate-application.vercel.app/api/certificate/getbycode/${certificateId}`,
+                        {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        }
+                    );
+
+                    // Handle API responses properly
+                    if (response.status === 404) {
+                        resultDiv.innerHTML = '<p style="color: #ff6b6b;">❌ Certificate not found. Please check your ID and try again.</p>';
+                        return;
+                    }
+
+                    if (response.status === 400) {
+                        resultDiv.innerHTML = '<p style="color: #ff6b6b;">⚠️ Bad request. Please enter a valid certificate ID.</p>';
+                        return;
+                    }
+
+                    if (response.status === 500) {
+                        resultDiv.innerHTML = '<p style="color: #ff6b6b;">🚨 Internal Server Error. Please try again later.</p>';
+                        return;
+                    }
+
+                    if (!response.ok) {
+                        throw new Error("Unexpected API error");
+                    }
+
+                    // Parse JSON response
+                    const data = await response.json();
+
+                    // Show certificate details if found
+                    if (data) {
+                        resultDiv.innerHTML = `
+                <div style="color: #51cf66;">
+                    <h4>✅ Certificate Verified Successfully!</h4>
+                    <p><b>Certificate ID:</b> ${data.code || certificateId}</p>
+                    <p><b>Name:</b> ${data.name || "N/A"}</p>
+                    <p><b>Role:</b> ${role}</p>
+                    <p><b>Issued on:</b> ${data.issuedOn || "Not available"}</p>
+                    <p><b>Valid until:</b> ${data.validUntil || "Not available"}</p>
+                </div>
+            `;
+                    } else {
+                        resultDiv.innerHTML = '<p style="color: #ff6b6b;">Certificate not found. Please try again.</p>';
+                    }
+                } catch (error) {
+                    resultDiv.innerHTML = `<p style="color: #ff6b6b;">Error: ${error.message}</p>`;
+                }
+            }
+
+            // Homepage verification button
+            document.getElementById('verify-certificate').addEventListener('click', function () {
+                const role = document.getElementById('role').value;
+                const certificateId = document.getElementById('certificate-id').value;
+                const resultDiv = document.getElementById('verification-result');
+                verifyCertificate(role, certificateId, resultDiv);
+            });
+
+            // Certificate page verification button
+            document.getElementById('verify-certificate-btn').addEventListener('click', function () {
+                const role = document.getElementById('cert-role').value;
+                const certificateId = document.getElementById('certificate-id-input').value;
+                const resultDiv = document.getElementById('certificate-result');
+                verifyCertificate(role, certificateId, resultDiv);
+            });
+
+            // Course card click event
+            document.querySelectorAll('.course-card').forEach(card => {
+                card.addEventListener('click', function () {
+                    const courseId = this.getAttribute('data-course-id');
+                    showCourseDetails(courseId);
+                });
+            });
+
+            // Footer course links
+            document.querySelectorAll('.footer-links a[data-course-id]').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const courseId = this.getAttribute('data-course-id');
+                    showCourseDetails(courseId);
+                });
+            });
+
+            // Back button event
+            document.getElementById('back-to-courses').addEventListener('click', function () {
+                document.getElementById('course-details-page').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                window.scrollTo(0, 0);
+            });
+
+            // Back to main from certificate page
+            document.getElementById('back-to-main').addEventListener('click', function () {
+                document.getElementById('certificate-page').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                window.scrollTo(0, 0);
+            });
+
+            // Certificate verification link
+            document.querySelectorAll('a[href="#certificate"]').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.getElementById('main-content').style.display = 'none';
+                    document.getElementById('certificate-page').style.display = 'block';
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            // Initialize a slider
+            function initSlider(sliderType) {
+                const slider = document.getElementById(`${sliderType}-slider`);
+                const dotsContainer = document.getElementById(`${sliderType}-dots`);
+                const prevBtn = document.getElementById(`${sliderType}-prev`);
+                const nextBtn = document.getElementById(`${sliderType}-next`);
+
+                let currentSlide = 0;
+                const slides = document.querySelectorAll(`#${sliderType}-slider .course-card, #${sliderType}-slider .team-member`);
+                const totalSlides = slides.length;
+
+                // Create dots based on number of slides
+                for (let i = 0; i < totalSlides - 1; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+
+                // Function to update slider position
+                function updateSlider() {
+                    const cardWidth = slides[0].offsetWidth + parseInt(getComputedStyle(slider).gap);
+                    slider.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+
+                    // Update active dot
+                    document.querySelectorAll(`#${sliderType}-dots .dot`).forEach((dot, index) => {
+                        if (index === currentSlide) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Go to specific slide
+                function goToSlide(index) {
+                    currentSlide = index;
+                    updateSlider();
+                }
+
+                // Next slide
+                function nextSlide() {
+                    if (currentSlide < totalSlides - getSlidesToShow()) {
+                        currentSlide++;
+                    } else {
+                        currentSlide = 0;
+                    }
+                    updateSlider();
+                }
+
+                // Previous slide
+                function prevSlide() {
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                    } else {
+                        currentSlide = totalSlides - getSlidesToShow();
+                    }
+                    updateSlider();
+                }
+
+                // Calculate how many slides to show based on screen width
+                function getSlidesToShow() {
+                    if (window.innerWidth >= 1024) return 3;
+                    if (window.innerWidth >= 768) return 2;
+                    return 1;
+                }
+
+                // Event listeners for arrows
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+
+                // Auto slide every 5 seconds
+                setInterval(nextSlide, 5000);
+
+                // Update slider on window resize
+                window.addEventListener('resize', updateSlider);
+            }
+
+            // Show course details
+            function showCourseDetails(courseId) {
+                const course = courses[courseId];
+                if (!course) return;
+
+                // Update course details page
+                document.getElementById('detail-course-image').src = course.image;
+                document.getElementById('detail-course-title').textContent = course.title;
+                document.getElementById('detail-course-price').textContent = course.price;
+                document.getElementById('detail-course-rating').textContent = course.rating;
+                document.getElementById('detail-course-students').textContent = course.students;
+                document.getElementById('detail-course-duration').textContent = course.duration;
+                document.getElementById('detail-course-description').textContent = course.description;
+                document.getElementById('detail-full-description').innerHTML = course.fullDescription;
+
+                // Update instructor details
+                document.getElementById('detail-instructor-image').src = course.instructor.image;
+                document.getElementById('detail-instructor-name').textContent = course.instructor.name;
+                document.getElementById('detail-instructor-role').textContent = course.instructor.role;
+                document.getElementById('detail-instructor-bio').textContent = course.instructor.bio;
+
+                // Update learning outcomes
+                const learningList = document.getElementById('detail-learning-outcomes');
+                learningList.innerHTML = '';
+                course.learningOutcomes.forEach(outcome => {
+                    const li = document.createElement('li');
+                    li.textContent = outcome;
+                    learningList.appendChild(li);
+                });
+
+                // Update testimonials
+                const testimonialsGrid = document.getElementById('detail-testimonials');
+                testimonialsGrid.innerHTML = '';
+                course.testimonials.forEach(testimonial => {
+                    const testimonialCard = document.createElement('div');
+                    testimonialCard.classList.add('testimonial-card');
+                    testimonialCard.innerHTML = `
+                        <div class="testimonial-text">
+                            <p>"${testimonial.text}"</p>
+                        </div>
+                        <div class="testimonial-author">- ${testimonial.author}</div>
+                    `;
+                    testimonialsGrid.appendChild(testimonialCard);
+                });
+
+                // Show course details page and hide main content
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('course-details-page').style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        });
+    </script>
+</body>
+
+</html>
