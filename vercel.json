@@ -1,15 +1,10 @@
 {
   "version": 2,
   "public": true,
-  "rootDirectory": "MSN",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/msn.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/",
+      "destination": "/msn.html"
     }
   ],
   "headers": [
