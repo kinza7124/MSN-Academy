@@ -1,13 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "rootDirectory": "MSN",
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/msn.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
