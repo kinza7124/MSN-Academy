@@ -1,15 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "msn.html",
-      "use": "@vercel/static"
-    }
-  ],
+  "public": true,
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/msn.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ],
   "headers": [
